@@ -1,11 +1,14 @@
 const express = require('express')
 const logger = require('morgan')
 const app = express()
+const router = require('./routes/index')
+
 
 app.use(logger('dev'))
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(`${__dirname}/client/build`))
+
 app.use('/api', router);
 
 // app.use('/', (req, res) => {
