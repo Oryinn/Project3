@@ -7,6 +7,41 @@ const showController = {
             res.json(shows)
         })
         .catch(err => console.log(err))
+    },
+    show: (req, res) => {
+        const showId = req.params.id
+        Show.findById(showId)
+        .then((show => {
+            res.json(show)
+        }))
+    },
+    create: (req, res) => {
+        const newShow = req.body
+        Show.create(newShow)
+        .then((show) => {
+            res.json(show)
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json(err)
+        })
+    },
+    update: (req, res) => {
+       const showId = req.params.id
+       const updatedShow = req.body
+       Show.findByIdAndUpdate(showId, updatedShow, {new: true})
+       .then((savedShow) => {
+           res.json(savedShow)
+       })
+    },
+    delete: (req, res) => {
+        const showId = req.params.id
+        Show.findByIdAndRemove(showId)
+        .then(() => {
+            res.json({
+                msg: 'Successfully Deleted'
+            })
+        })
     }
 }
 
