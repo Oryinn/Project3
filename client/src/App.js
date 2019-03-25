@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Home from './components/Home.js'
+import Shows from './components/Shows.js'
+import Show from './components/Show.js'
 class App extends Component {
   render() {
     return (
       <Router>
       <div >
         <Switch>
-          <Route exact path="/" component = {Home} />
+          <Route exact path="/" component = {Shows} />
+          <Route path="/:id" component = {Show} />
         </Switch>
       </div>
       </Router>
