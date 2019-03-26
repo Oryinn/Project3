@@ -46,7 +46,7 @@ export default class Home extends Component {
     const newShowList = [...this.state.shows]
     newShowList.push(newShow)
 
-    this.setState({ productList: newShowList })
+    this.setState({ shows: newShowList })
   }
 
   handleCreateShowForm = () => {
@@ -64,7 +64,9 @@ export default class Home extends Component {
         <AddDiv>
           <AddButton onClick={this.handleCreateShowForm}>Add Show</AddButton>
           {this.state.createFormOpen ?
-            <CreateShow /> : null
+            <CreateShow 
+            addNewShowToShowList = {this.addNewShowToShowList}
+            /> : null
           }
         </AddDiv>
         <ShowsDiv>
