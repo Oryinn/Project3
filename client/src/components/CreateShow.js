@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import axios from 'axios'
 export default class CreateShow extends Component {
     state = {
         newShow: {
@@ -24,6 +24,15 @@ export default class CreateShow extends Component {
     addNewShow = (evt) => {
         evt.preventDefault();
         this.props.addNewShowToShowList(this.state.newShow)
+        axios
+            .post('/api/shows', {
+                name: this.state.newShow.name,
+                description: this.state.newShow.comedian,
+                date: this.state.newShow.date,
+                location: this.state.newShow.location,
+                tickets: this.state.newShow.tickets
+            })
+            
     }
 
     render() {

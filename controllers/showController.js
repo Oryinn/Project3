@@ -9,7 +9,7 @@ const showController = {
         .catch(err => console.log(err))
     },
     show: (req, res) => {
-        const showId = req.params.id
+        const showId = req.params.showId
         Show.findById(showId)
         .then((show => {
             res.json(show)
@@ -27,7 +27,7 @@ const showController = {
         })
     },
     update: (req, res) => {
-       const showId = req.params.id
+       const showId = req.params.showId
        const updatedShow = req.body
        Show.findByIdAndUpdate(showId, updatedShow, {new: true})
        .then((savedShow) => {
