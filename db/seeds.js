@@ -22,8 +22,18 @@ Show.deleteMany().then(() => {
         name: 'Strange Times Tour',
         comedian: 'Joe Rogan',
         date: Date.now(),
-        Location: 'The Tabernacle, Atlanta GA',
+        location: 'The Tabernacle, Atlanta GA',
         tickets: 'www.eventbrite.com',
     })
     return firstSeedShow.save()
+        .then(() => {
+            const bertShow = new Show({
+                name: 'Body Shots Tour',
+                comedian: 'Bert Kreischer',
+                date: Date.now(),
+                location: 'The Tabernacle, Atlanta GA',
+                tickets: 'www.eventbrite.com',
+            })
+            return bertShow.save()
+        })
 })

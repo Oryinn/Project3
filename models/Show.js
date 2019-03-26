@@ -5,7 +5,7 @@ const Show = new Schema ({
     name: String,
     comedian: String,
     date: Date,
-    Location: String,
+    location: String,
     tickets: String,
 
 })
