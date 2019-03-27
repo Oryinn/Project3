@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import DeleteUser from './DeleteUser'
+import BackButton from './BackButton'
 
 const MainDiv = styled.div`
   width: 90vw;
@@ -15,14 +16,27 @@ const MainDiv = styled.div`
 const UsersDiv = styled.div`
 align-items: flex-start;
 grid-column: 2;
-grid-row: 2;
+grid-row: 3;
 text-align: center;
+`
+
+const HeaderDiv = styled.div`
+align-items: center;
+text-align: center;
+grid-column-start: 2;
+grid-row-start: 1;
+`
+const ButtonDiv = styled.div`
+    align-items: center;
+    grid-column: 2;
+    grid-row: 2;
+    text-align: center;
 `
 
 
 export default class UserIndex extends Component {
     state = {
-        
+
         users: []
     }
     componentDidMount = () => {
@@ -31,24 +45,32 @@ export default class UserIndex extends Component {
         })
     }
 
-    
+
     render() {
         const users = this.state.users.map((user, i) => {
-            
+
             return (
-                
+
                 <div key={i}>
-                <h4>
-                    {user.name} - {user.email} - <DeleteUser userId={user._id} />
-                </h4>
-                <hr />
+                    <h4>
+                        {user.name} - {user.email} - <DeleteUser userId={user._id} />
+                    </h4>
+                    <hr />
                 </div>
             )
         })
         return (
             <MainDiv >
-                <UsersDiv>
+                <HeaderDiv >
                     <h1>User List</h1>
+                </HeaderDiv>
+                <ButtonDiv>
+                    <BackButton />
+                </ButtonDiv>
+
+                <UsersDiv>
+
+
                     {users}
                 </UsersDiv>
             </MainDiv>

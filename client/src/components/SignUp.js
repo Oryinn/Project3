@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import styled from 'styled-components'
-import { Link, Redirect } from 'react-router-dom'
-
+import { Redirect } from 'react-router-dom'
+import BackButton from './BackButton'
 const MainDiv = styled.div`
   width: 90vw;
   height: 100vh;
@@ -36,17 +36,6 @@ const PasswordDiv = styled.div`
 grid-row-start: 5;
 grid-column-start: 2;
 `
-const BackButton = styled.button`
-    background-color: lightblue;
-    color: #222;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 12px;
-    font-size: 1em;
-    margin: 3px;
-    
-`
-
 const NameInput = styled.input`
     padding: 12px 20px;
     margin: 8px 0;  
@@ -115,7 +104,7 @@ export default class SignUp extends Component {
                 </HeaderDiv>
 
                 <InputDiv>
-                <BackButton><Link to="/">Back</Link> </BackButton>
+                <BackButton />
                     <form onSubmit={this.addNewUser}>
                         <NameDiv>
                             <NameInput

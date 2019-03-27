@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
+import BackButton from './BackButton'
 
 const MainDiv = styled.div`
   width: 90vw;
@@ -51,16 +52,7 @@ const LogInButton = styled.input`
     font-size: 1em;
     margin: 2px;
 `
-const BackButton = styled.button`
-    background-color: lightblue;
-    color: #222;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 12px;
-    font-size: 1em;
-    margin: 3px;
-    
-`
+
 export default class LogIn extends Component {
     state = {
         userLogin: {
@@ -90,7 +82,7 @@ export default class LogIn extends Component {
             <MainDiv>
                 <HeaderDiv><h1>Log In</h1></HeaderDiv>
                 <InputDiv>
-                <BackButton><Link to="/">Back</Link> </BackButton>
+                <BackButton />
                     <form onSubmit={this.loginUser}>
                         <EmailDiv>
                             <EmailInput

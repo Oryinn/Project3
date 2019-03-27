@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
 import UpdateShow from './UpdateShow'
 import moment from 'moment'
+import BackButton from './BackButton'
 
 const MainDiv = styled.div`
   width: 90vw;
@@ -15,16 +16,7 @@ const MainDiv = styled.div`
   justify-content: center;
   flex-wrap: wrap;
 `
-const BackButton = styled.button`
-    background-color: lightblue;
-    color: #222;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 12px;
-    font-size: 1em;
-    margin: 3px;
-    
-`
+
 const DeleteButton = styled.button`
     background-color: red;
     color: #222;
@@ -51,9 +43,10 @@ grid-row-start: 1;
 `
 const ShowButtons = styled.div`
 display: inline;
-justify-content: center;
+justify-content: space-evenly;
 align-items: center;
 grid-column-start: 2;
+text-align: center;
 `
 const ComedianDiv = styled.div`
 grid-column-start: 2;
@@ -131,7 +124,7 @@ export default class Show extends Component {
                 </HeaderDiv>
 
                 <ShowButtons>
-                    <BackButton><Link to="/">Back</Link> </BackButton>
+                    <BackButton />
                     <DeleteButton onClick={this.deleteShow}>Delete</DeleteButton>
                     <UpdateButton onClick={this.handleUpdateShowForm}>Update</UpdateButton>
                 </ShowButtons>
