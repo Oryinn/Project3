@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-export default class CreateShow extends Component {
+export default class UpdateShow extends Component {
     state = {
-        newShow: {
+        updateShow: {
             name: '',
             comedian: '',
             date: '',
@@ -11,28 +11,31 @@ export default class CreateShow extends Component {
 
         }
     }
-    handleNewShowChange = (event) => {
+    componentDidMount = () => {
+            this.setState({ updateShow: this.props.show })
+        }
+    
+    handleUpdateShowChange = (event) => {
         const attributeName = event.target.name;
         const attributeValue = event.target.value;
 
-        const newShow = { ...this.state.newShow };
-        newShow[attributeName] = attributeValue;
+        const updateShow = { ...this.state.newShow };
+        updateShow[attributeName] = attributeValue;
 
-        this.setState({ newShow })
+        this.setState({ updateShow })
     };
 
-    addNewShow = (evt) => {
-        evt.preventDefault();
-        this.props.addNewShowToShowList(this.state.newShow)
+    updateShow = (evt) => {
+        // evt.preventDefault();
         axios
-            .post('/api/shows', {
-                name: this.state.newShow.name,
-                description: this.state.newShow.comedian,
-                date: this.state.newShow.date,
-                location: this.state.newShow.location,
-                tickets: this.state.newShow.tickets
+            .put(`/api/shows/${this.props.showId}`, {
+                name: this.state.updateShow.name,
+                description: this.state.updateShow.comedian,
+                date: this.state.updateShow.date,
+                location: this.state.updateShow.location,
+                tickets: this.state.updateShow.tickets
             }).then(() =>{
-                this.props.handleCreateShowForm()
+                this.props.handleUpdateShowForm()
             })
             
     }
@@ -40,14 +43,14 @@ export default class CreateShow extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.addNewShow}>
+                <form onSubmit={this.updateShow}>
                     <div>
                         <input
                             type='text'
                             name="name"
                             placeholder="Show Name"
-                            value={this.state.newShow.name}
-                            onChange={this.handleNewShowChange}
+                            value={this.state.updateShow.name}
+                            onChange={this.handleUpdateShowChange}
                         />
                     </div>
                     <div>
@@ -55,8 +58,8 @@ export default class CreateShow extends Component {
                             type='text'
                             name="comedian"
                             placeholder="Comedian Name"
-                            value={this.state.newShow.comedian}
-                            onChange={this.handleNewShowChange}
+                            value={this.state.updateShow.comedian}
+                            onChange={this.handleUpdateShowChange}
                         />
                     </div>
                     <div>
@@ -64,8 +67,8 @@ export default class CreateShow extends Component {
                             type='date'
                             name="date"
                             placeholder="Show Date"
-                            value={this.state.newShow.date}
-                            onChange={this.handleNewShowChange}
+                            value={this.state.updateShow.date}
+                            onChange={this.handleUpdateShowChange}
                         />
                     </div>
                     <div>
@@ -73,8 +76,8 @@ export default class CreateShow extends Component {
                             type='text'
                             name="location"
                             placeholder="Show Location"
-                            value={this.state.newShow.location}
-                            onChange={this.handleNewShowChange}
+                            value={this.state.updateShow.location}
+                            onChange={this.handleUpdateShowChange}
                         />
                     </div>
                     <div>
@@ -82,14 +85,14 @@ export default class CreateShow extends Component {
                             type='text'
                             name="tickets"
                             placeholder="Ticket Link"
-                            value={this.state.newShow.tickets}
-                            onChange={this.handleNewShowChange}
+                            value={this.state.updateShow.tickets}
+                            onChange={this.handleUpdateShowChange}
                         />
                     </div>
                     <div>
                         <input
                             type="submit"
-                            value="Create New Show"
+                            value="Update Show"
                         />
                     </div>
                 </form>

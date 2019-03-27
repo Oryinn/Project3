@@ -35,7 +35,7 @@ const showController = {
        })
     },
     delete: (req, res) => {
-        const showId = req.params.id
+        const showId = req.params.showId
         Show.findByIdAndRemove(showId)
         .then(() => {
             res.json({

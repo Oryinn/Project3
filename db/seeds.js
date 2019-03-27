@@ -5,14 +5,16 @@ User.deleteMany().then(() => {
     const newUser = new User({
         name: 'user1',
         email: 'user1@gmail.com',
-        password: '123'
+        password: '123',
+        favoriteShows: []
     })
     return newUser.save()
 }).then(() => {
     const newAdmin = new User({
         name: 'Admin',
         email: 'admin@gmail.com',
-        password: '123'
+        password: '123',
+        favoriteShows: []
     })
     return newAdmin.save()
 })

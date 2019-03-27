@@ -3,8 +3,8 @@ const User = require('../models/User')
 const userController = {
     index: (req, res) => {
         User.find()
-        .then(shows => {
-            res.json(shows)
+        .then(users => {
+            res.json(users)
         })
         .catch(err => console.log(err))
     },
@@ -17,7 +17,7 @@ const userController = {
     },
     create: (req, res) => {
         const newUser = req.body
-        Show.create(newUser)
+        User.create(newUser)
         .then((user) => {
             res.json(user)
         })
@@ -29,14 +29,14 @@ const userController = {
     update: (req, res) => {
        const userId = req.params.id
        const updatedUser = req.body
-       Show.findByIdAndUpdate(userId, updatedUser, {new: true})
+       User.findByIdAndUpdate(userId, updatedUser, {new: true})
        .then((savedUser) => {
            res.json(savedUser)
        })
     },
     delete: (req, res) => {
         const userId = req.params.id
-        Show.findByIdAndRemove(userId)
+        User.findByIdAndRemove(userId)
         .then(() => {
             res.json({
                 msg: 'Successfully Deleted'
