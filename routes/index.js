@@ -13,6 +13,6 @@ router.get('/users', userController.index)
 router.post('/users', userController.create)
 router.get('/users/:userId', userController.show)
 router.put('/users/:userId', userController.update)
-router.delete('/users/:usersId', userController.delete)
+router.delete('/users/:userId', userController.delete)
 
 module.exports = router

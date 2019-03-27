@@ -9,7 +9,7 @@ const userController = {
         .catch(err => console.log(err))
     },
     show: (req, res) => {
-        const userId = req.params.id
+        const userId = req.params.userId
         User.findById(userId)
         .then((user => {
             res.json(user)
@@ -27,7 +27,7 @@ const userController = {
         })
     },
     update: (req, res) => {
-       const userId = req.params.id
+       const userId = req.params.userId
        const updatedUser = req.body
        User.findByIdAndUpdate(userId, updatedUser, {new: true})
        .then((savedUser) => {
@@ -35,7 +35,7 @@ const userController = {
        })
     },
     delete: (req, res) => {
-        const userId = req.params.id
+        const userId = req.params.userId
         User.findByIdAndRemove(userId)
         .then(() => {
             res.json({

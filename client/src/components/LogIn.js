@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import styled from 'styled-components'
-import { Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 const MainDiv = styled.div`
   width: 90vw;
   height: 100vh;
   display: grid;
   grid-template-columns: 10% auto 10%;
-  grid-template-rows: 8vh 8vh 8vh  auto;
+  grid-template-rows: 10vh 8vh 8vh  auto;
   flex-wrap: wrap;
 `
 const HeaderDiv = styled.div`
@@ -52,6 +51,16 @@ const LogInButton = styled.input`
     font-size: 1em;
     margin: 2px;
 `
+const BackButton = styled.button`
+    background-color: lightblue;
+    color: #222;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 12px;
+    font-size: 1em;
+    margin: 3px;
+    
+`
 export default class LogIn extends Component {
     state = {
         userLogin: {
@@ -71,7 +80,7 @@ export default class LogIn extends Component {
 
     loginUser = (evt) => {
         evt.preventDefault()
-        
+
     }
     render() {
         if (this.state.redirect) {
@@ -81,6 +90,7 @@ export default class LogIn extends Component {
             <MainDiv>
                 <HeaderDiv><h1>Log In</h1></HeaderDiv>
                 <InputDiv>
+                <BackButton><Link to="/">Back</Link> </BackButton>
                     <form onSubmit={this.loginUser}>
                         <EmailDiv>
                             <EmailInput

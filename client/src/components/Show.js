@@ -93,6 +93,7 @@ export default class Show extends Component {
         mapsLocation: '',
     }
     componentDidMount = () => {
+        
         axios.get(`/api/shows/${this.state.showId}`).then(res => {
             this.setState({ show: res.data })
         }).then(()=> {
@@ -119,6 +120,7 @@ export default class Show extends Component {
     }
 
     render() {
+        const ticketURL = this.state.show.tickets
         if (this.state.redirect) {
             return (<Redirect to="/" />)
         }
@@ -142,7 +144,7 @@ export default class Show extends Component {
                 /> : null }
             
                 <ComedianDiv >
-                    <h4>Presented by: {this.state.show.comedian}</h4>
+                    <h2>Presented by: {this.state.show.comedian}</h2>
                 </ComedianDiv>
 
                 <DateDiv >
@@ -150,11 +152,11 @@ export default class Show extends Component {
                 </DateDiv>
 
                 <TicketsDiv >
-                    <h4><a href={this.state.show.tickets}>Ticket Link!</a></h4>
+                    <h4><a href={`https://${ticketURL}`}>Ticket Link!</a></h4>
                 </TicketsDiv>
 
                 <LocationDiv >
-                    <h5>Address: <a href={`https://www.google.com/maps/search/${this.state.mapsLocation}`}>{this.state.show.location}</a></h5>
+                    <h4>Address: <a href={`https://www.google.com/maps/search/${this.state.mapsLocation}`}>{this.state.show.location}</a></h4>
                 </LocationDiv>
             
             </MainDiv>
