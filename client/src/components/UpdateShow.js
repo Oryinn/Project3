@@ -30,7 +30,7 @@ export default class UpdateShow extends Component {
         axios
             .put(`/api/shows/${this.props.showId}`, {
                 name: this.state.updateShow.name,
-                description: this.state.updateShow.comedian,
+                comedian: this.state.updateShow.comedian,
                 date: this.state.updateShow.date,
                 location: this.state.updateShow.location,
                 tickets: this.state.updateShow.tickets

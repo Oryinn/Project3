@@ -27,7 +27,7 @@ export default class CreateShow extends Component {
         axios
             .post('/api/shows', {
                 name: this.state.newShow.name,
-                description: this.state.newShow.comedian,
+                comedian: this.state.newShow.comedian,
                 date: this.state.newShow.date,
                 location: this.state.newShow.location,
                 tickets: this.state.newShow.tickets
