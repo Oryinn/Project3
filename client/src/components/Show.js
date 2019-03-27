@@ -58,24 +58,29 @@ grid-column-start: 2;
 const ComedianDiv = styled.div`
 grid-column-start: 2;
 grid-row-start: 3;
+text-align: center;
 `
 const DateDiv = styled.div`
 grid-column-start: 2;
 grid-row-start: 4;
+text-align: center;
 `
 const LocationDiv = styled.div`
 grid-column-start: 2;
 grid-row-start: 6;
+text-align: center;
 `
 const TicketsDiv = styled.div`
 grid-column-start: 2;
 grid-row-start: 5;
+text-align: center;
 `
+
 
 
 export default class Show extends Component {
     state = {
-        showId: this.props.match.params.id,
+        showId: this.props.match.params.showId,
         updateFormOpen: false,
         show: {
             name: '',
@@ -135,7 +140,7 @@ export default class Show extends Component {
                 handleUpdateShowForm = {this.handleUpdateShowForm}
                 showId = {this.state.showId}
                 /> : null }
-
+            
                 <ComedianDiv >
                     <h4>Presented by: {this.state.show.comedian}</h4>
                 </ComedianDiv>
@@ -151,7 +156,7 @@ export default class Show extends Component {
                 <LocationDiv >
                     <h5>Address: <a href={`https://www.google.com/maps/search/${this.state.mapsLocation}`}>{this.state.show.location}</a></h5>
                 </LocationDiv>
-
+            
             </MainDiv>
         )
     }

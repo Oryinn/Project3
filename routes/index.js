@@ -3,7 +3,7 @@ const router = express.Router()
 const showController = require('../controllers/showController')
 const userController = require('../controllers/userController')
 
-router.get('/', showController.index)
+router.get('/shows', showController.index)
 router.post('/shows', showController.create)
 router.get('/shows/:showId', showController.show)
 router.put('/shows/:showId', showController.update)

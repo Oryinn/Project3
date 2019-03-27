@@ -38,13 +38,19 @@ const SignUpButton = styled.button`
     cursor: pointer;
     padding: 12px;
     font-size: 1em;
+    margin: 2px;
 `
-const LoginDiv = styled.div`
-align-content: center;
-text-align: center;
-grid-column: 2;
-grid-row-start: 2;
+
+const SignOutButton = styled.button`
+    background-color: lightsteelblue;
+    color: #222;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 12px;
+    font-size: 1em;
+    margin: 2px;
 `
+
 const HeaderDiv = styled.div`
 align-content: center;
 text-align: center;
@@ -72,10 +78,11 @@ text-align: center;
 export default class Home extends Component {
   state = {
     shows: [],
-    createFormOpen: false
+    createFormOpen: false,
+    isLoggedIn: false,
   }
   componentDidMount = () => {
-    axios.get(`/api/`).then(res => {
+    axios.get(`/api/shows`).then(res => {
       this.setState({ shows: res.data })
 
       this.sortShowsByDate()
@@ -111,7 +118,7 @@ export default class Home extends Component {
         <div key={i}>
           <h4>
             <Link
-              to={`/${show._id}`}
+              to={`/shows/${show._id}`}
 
             >{show.name}</Link>
             - {moment(show.date).format('MMMM Do YYYY')}
@@ -136,7 +143,16 @@ export default class Home extends Component {
 
         <ButtonDiv>
           <AddButton onClick={this.handleCreateShowForm}>Add Show</AddButton>
+          {this.isLoggedIn ?
+          <SignOutButton >Sign Out</SignOutButton>
+          :
+          <span>
           <LoginButton ><Link to="/login">Log In</Link></LoginButton>
+          <SignUpButton ><Link to="/signup">Sign Up</Link></SignUpButton>
+          </span>
+          
+          }
+          
           {this.state.createFormOpen
             ?
             <CreateShow
