@@ -26,7 +26,6 @@ export default class UpdateShow extends Component {
     };
 
     updateShow = (evt) => {
-        // evt.preventDefault();
         axios
             .put(`/api/shows/${this.props.showId}`, {
                 name: this.state.updateShow.name,
