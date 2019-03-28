@@ -5,11 +5,11 @@ import moment from 'moment'
 import styled from 'styled-components'
 import CreateShow from './CreateShow.js'
 const MainDiv = styled.div`
-  width: 90vw;
+  width: 95vw;
   height: 100vh;
   display: grid;
-  grid-template-columns: 10% auto 10%;
-  grid-template-rows: 10vh 10vh 12vh auto;
+  grid-template-columns: 5% auto 5%;
+  grid-template-rows: 10vh 12vh 13vh auto;
   /* justify-content: center; */
   flex-wrap: wrap;
 `
