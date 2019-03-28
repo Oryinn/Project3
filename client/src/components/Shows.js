@@ -143,6 +143,7 @@ export default class Home extends Component {
 
         <ButtonDiv>
           <AddButton onClick={this.handleCreateShowForm}>Add Show</AddButton>
+          <LoginButton ><Link to="/users">Users</Link></LoginButton>
           {this.isLoggedIn ?
           <SignOutButton >Sign Out</SignOutButton>
           :
