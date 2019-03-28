@@ -56,6 +56,7 @@ align-content: center;
 text-align: center;
 grid-column: 2;
 grid-row: 1;
+font-family: 'Germania One', cursive;
 `
 const ButtonDiv = styled.div`
 align-items: center;
