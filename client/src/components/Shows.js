@@ -76,6 +76,10 @@ grid-row: 3;
 text-align: center;
 `
 
+const WhiteLink  = styled(Link)`
+color: white;
+`
+
 export default class Home extends Component {
   state = {
     shows: [],
@@ -118,10 +122,10 @@ export default class Home extends Component {
       return (
         <div key={i}>
           <h4>
-            <Link
+            <WhiteLink
               to={`/shows/${show._id}`}
 
-            >{show.name}</Link>
+            >{show.name}</WhiteLink>
             - {moment(show.date).format('MMMM Do YYYY')}
           </h4>
           <hr />
