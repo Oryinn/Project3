@@ -10,7 +10,7 @@ https://comedy-tracker.herokuapp.com/
 Trello Board:
 https://trello.com/b/Qv9Xte5F/wdi-project-3
 
-![Wireframe](https://i.imgur.com/QZULQTN.jpg)
+![Wireframe and ERD](https://i.imgur.com/MWUHvQK.jpg)
 
 The technologies I used in this project are: Node, express, mongoose, React, styled-components, Moment.js, axios, nodemon, concurrently.
 
